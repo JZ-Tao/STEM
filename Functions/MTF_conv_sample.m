@@ -17,8 +17,8 @@ end
 X_LP = zeros(size(X));
 n_band = size(X,3);
 
-% PAN或I分量的卷积-下采样过程，
-if n_band == 1 % PAN or I
+% PAN or I
+if n_band == 1 
     PSF_MS = sensorInf.PSF_G;
     switch conv_mode 
         case 1 % Averaging all MS PSF
@@ -36,10 +36,10 @@ if n_band == 1 % PAN or I
             PSF_G = MTF_GNyq2PSF(avg_GNyq, 41, ratio);
         case 7 % Starck Murtagh filter
             I_Filtered = LPfilterPlusDec(X,ratio); return;
-        case 8 % % Calc. PSF by the median of all MS MTF Nyqust
+        case 8 % Calc. PSF by the median of all MS MTF Nyqust
             avg_GNyq = median(getGNyqBySensor(sensorInf.sensor, size(PSF_MS, 3), 1));
             PSF_G = MTF_GNyq2PSF(avg_GNyq, 41, ratio); 
-        case 9 % % Calc. PSF by the median of all MS MTF Nyqust
+        case 9 % Calc. PSF by GNyqst_in
             PSF_G = MTF_GNyq2PSF(GNyqst_in, 41, ratio);
     end
 else

@@ -15,10 +15,6 @@ if is_FS
     [QI.QNR_Plus,~,QI.D_S_R]= QNR_Plus(I_F,I_MS_LR,I_MS,I_PAN,Qblocks_size,sensorInf,ratio);
 	I_F_D = MTF_conv_sample(I_F,sensorInf,ratio,1);
     QI.Q = q2n(I_MS_LR,I_F_D,Qblocks_size,Qblocks_size);
-    % Metrics computation,2022
-    P_repro = resize_w_mtf(I_F,I_MS_LR,I_PAN,sensorInf.sensor,ratio);
-    [QI.R_Q2n, QI.R_Q, QI.R_SAM, QI.R_ERGAS] = consistency_metrics_evaluation(P_repro,I_MS_LR,ratio,Qblocks_size,flag_cut_bounds,dim_cut);
-    QI.D_RHO = D_rho(I_F,I_PAN,double(ratio/2));
 else
     if flag_cut_bounds
         I_GT = I_GT(1+dim_cut:end-dim_cut,1+dim_cut:end-dim_cut,:);
@@ -31,11 +27,8 @@ else
     QI.RMSE = RMSE(I_GT, I_F);
     nb = size(I_GT, 3);
     tmp = 0;
-%     K = [0.01 0.03];
-%     window = fspecial('gaussian', 11, 1.5);
     for i=1:nb
          tmp = tmp + ssim(I_F(:,:,i), I_GT(:,:,i),'DynamicRange',2^double(L)-1);
-         %tmp = tmp + ssim2(I_F(:,:,i), I_GT(:,:,i), K, window, 2^double(L)-1);
     end
     QI.SSIM = tmp/nb;
 end

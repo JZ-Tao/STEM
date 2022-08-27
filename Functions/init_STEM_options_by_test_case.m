@@ -1,20 +1,20 @@
 function EXP_options = init_STEM_options_by_test_case(case_name)
-% Parameter Combination in the paper:
-% Substitutive mode: 'deb+H+S+A',
-% Additive mode: 'deb+H+2A'
+% Parameter combination in the paper:
+% Substitutive mode: 'deb+H+S+A', 'deb+H+S+A+AW'
+% Additive mode: 'deb+H+2A', 'deb+H+2A+AW'
 % Note: Due to code cleanup, other parameter combinations are not guaranteed availability
-% Some default value for common parameters
 
-    EXP_options.prep.ds_mode = 1;
-    EXP_options.prep.hm_mode = 1; % histogram match mode, 1 (default)
-    EXP_options.prep.need_PAN_LP = 0;
-    EXP_options.prep.G_type = 'ones';
-    EXP_options.fusion.W_method = 'DST'; % Directional structure tree
-    EXP_options.fusion.adaptive_rho = 0; % 0 (default), or 1 when using adaptive mode;
-    % HF fusion rule. 'S': substitution. 'A': additive
-    EXP_options.fusion.HF_rule = 'S';
-    % LF fusion rule. MS(default)
-    EXP_options.fusion.LF_rule = 'MS';
+% Some default value for common parameters
+EXP_options.prep.ds_mode = 1;
+EXP_options.prep.hm_mode = 1; % histogram match mode, 1 (default)
+EXP_options.prep.need_PAN_LP = 0;
+EXP_options.prep.G_type = 'ones';
+EXP_options.fusion.W_method = 'DST'; % Directional structure tree
+EXP_options.fusion.adaptive_rho = 0; % 0 (default), or 1 when using adaptive mode;
+% HF fusion rule. 'S': substitutive. 'A': additive
+EXP_options.fusion.HF_rule = 'S';
+% LF fusion rule. MS(default)
+EXP_options.fusion.LF_rule = 'MS';
     
 if strcmp(case_name, 'deb+H+MS')
     EXP_options.prep.MS_deb = 0;

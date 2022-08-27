@@ -19,9 +19,11 @@ switch(W_method)
         MA = 2 * MA ./ (S1 + S2 + eps);
         % selection 
         m1 = MA > th; m2 = S1 > S2; 
-        w1 = (0.5 - 0.5*(1-MA) / (1-th)); % 0~0.5, MA只会高于th。两者越接近，w1越小。当MA为1，0.5
-        % Y  = (~m1) .* ((m2.*M1) + ((~m2).*M2)); % 低匹配度，由S决定用谁
-        % Y  = Y + (m1 .* ((m2.*M1.*(1-w1))+((m2).*M2.*w1) + ((~m2).*M2.*(1-w1))+((~m2).*M1.*w1))); % 高匹配度，根据S来进行两者的混合
+        w1 = (0.5 - 0.5*(1-MA) / (1-th)); 
+        % Low matching degree, S decides who to use
+        % Y  = (~m1) .* ((m2.*M1) + ((~m2).*M2)); 
+        % High matching degree, mix the two according to S
+        % Y  = Y + (m1 .* ((m2.*M1.*(1-w1))+((m2).*M2.*w1) + ((~m2).*M2.*(1-w1))+((~m2).*M1.*w1)));  
         W = ((~m1).*m2)+(m1.*m2.*(1-w1) + (~m2).*w1);
     case 'Li'
         % Li's method. Choose max with consistency check 
