@@ -10,7 +10,7 @@ end
 no_echo = 1;
 
 lvl_dcomp_enum = [0 1 2 3 4 5 6 7 8];
-lvl_dsize_enum = [4 4 8 16 16 16 16 16];
+lvl_dsize_enum = [4 4 8 16 16 16 16 16 16];
 shear_parameters.dcomp = lvl_dcomp_enum(1:clevels);
 shear_parameters.dsize = lvl_dsize_enum(1:clevels);
 shear_f = generateShearFilter([n_row, n_col],shear_parameters);

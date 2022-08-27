@@ -6,7 +6,7 @@ if ~isfield(Opts.prep, 'G_type'), Opts.prep.G_type = 'ratio'; end;
 % Histogram matching modes. 1: Global(default), local, 0: do not execute.
 if ~isfield(Opts.prep, 'hm_mode'), Opts.prep.hm_mode = 1; end;
 max_v = 1;
-% max_v = double(max(2^double(L)-1, 1)); % Should be uncommented if incoming data is not normalized
+% max_v = double(max(2^double(L)-1, 1));
 
 I_MS_LR = I_MS_LR./max_v;
 I_PAN = I_PAN./max_v;

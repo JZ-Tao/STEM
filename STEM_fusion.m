@@ -22,7 +22,7 @@ end
 no_echo = 1;
 % Parameter setting of NSST
 lvl_dcomp_enum = [0 1 2 3 4 5 6 7 8];
-lvl_dsize_enum = [4 4 8 16 16 16 16 16];
+lvl_dsize_enum = [4 4 8 16 16 16 16 16 16];
 if clevels > length(lvl_dcomp_enum)
     error('Exceeded maximum number of decomposition levels.');
 end
@@ -222,7 +222,6 @@ for j = 1:clevels
         else
             rho = 1; %p
         end
-        %rho = ((graythresh(Mt_LP_i))); % testing
         if strcmp(W_method, 'DST')
             % Fusion weight map calculation
             tau = 1;  
